@@ -16,7 +16,6 @@ class Album(models.Model):
 	name = models.CharField(db_index=True, max_length= 30)
 	no_of_tracks = models.IntegerField(default=0)
 	artist = models.ForeignKey(Artist, related_name='album_artist')
-	release_year = models.DateField()
 
 	def __unicode__(self):
 		return u'%s' % self.name	
@@ -25,7 +24,6 @@ class Album(models.Model):
 class Genre(models.Model):
 	genre = models.CharField(db_index=True, max_length= 30)
 	no_of_tracks = models.IntegerField(default=0)
-	no_of_artists = models.IntegerField(default=0)
 
 	def __unicode__(self):
 		return u'%s' % self.genre

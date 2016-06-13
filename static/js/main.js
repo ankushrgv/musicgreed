@@ -120,22 +120,22 @@ $(document).on('ready', function(){
             var tab_type = $this.data("tab-type");
 
             if(tab_type == "track"){
-                var t_msg = "New Track Added Succesfully!!";
+                var t_msg = "New Track Data Submitted Succesfully!!";
                 addnew_form_submit(t_url, t_form, t_msg);
             }
 
             else if(tab_type == "artist"){
-                var t_msg = "New Artist Added Succesfully!!";
+                var t_msg = "New Artist Data Submitted Succesfully!!";
                 addnew_form_submit(t_url, t_form, t_msg);
             }
 
             else if(tab_type == "genre"){
-                var t_msg = "New Genre Added Succesfully!!";
+                var t_msg = "New Genre Data Submitted Succesfully!!";
                 addnew_form_submit(t_url, t_form, t_msg);
             }
 
-            else if(tab_type == "artist"){
-                var t_msg = "New Album Added Succesfully!!";
+            else if(tab_type == "album"){
+                var t_msg = "New Album Data Submitted Succesfully!!";
                 addnew_form_submit(t_url, t_form, t_msg);
             }
         });

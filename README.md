@@ -1,2 +1,2 @@
 # musicgreed
-Online music web app for users as well as admin to manage playlists and the songs in DB respectively.
+Music web app for site admin to manage and add tracks, genres, artists and albums to DB.

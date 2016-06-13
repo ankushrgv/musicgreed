@@ -1,4 +1,6 @@
 
+
+from django import forms
 from django.conf import settings
 from django.contrib import messages
 from django.core.paginator import Paginator
@@ -42,7 +44,7 @@ class TrackList(ListView):
 				if genre_obj:
 					results = Track.objects.filter(genre = genre_obj.id)
 				else:
-					results = Track.objects.order_by('title').all()		
+					results = []	
 		else:
 			results = Track.objects.order_by('title').all()
 		
@@ -434,7 +436,7 @@ class AlbumDetails(DetailView, FormView):
 			try:
 				existing_artist = Artist.objects.get(name = album_artist)
 			except:
-				print "Invalid Artist"
+				print "Artist does not exist"
 
 			if existing_artist:
 				if album_obj.name != album_name:
@@ -507,9 +509,8 @@ def AddNew(request):
 
 		content = request.POST
 		print content
-
-
-
+		print content['element_type']
+		
 		if content['element_type'] == 'track':
 			track_genre = None
 			track_artist = None
@@ -538,6 +539,16 @@ def AddNew(request):
 					rating = int(content['rating']),
 					album = track_album)
 
+				track_genre.no_of_tracks += 1
+				track_artist.no_of_tracks += 1
+				track_album.no_of_tracks += 1
+
+				track_genre.save()
+				track_artist.save()
+				track_album.save()
+
+
+
 		elif content['element_type'] == 'artist':
 			Artist.objects.create(
 				name = content['artist'])
@@ -546,17 +557,19 @@ def AddNew(request):
 			Genre.objects.create(
 				genre = content['genre'])
 
-		else:
+		elif content['element_type'] == 'album':
 			album_artist = None
 			try:
 				album_artist = Artist.objects.get(name = content['artist'])
 			except:
-				print "Invalid artist"
+				print "Artist doesn't exists!!"
 
 			if album_artist:
 				Album.objects.create(
 					name = content['album'],
 					artist = album_artist)
+				album_artist.no_of_albums += 1
+				album_artist.save()
 
 		return HttpResponse(
 			 json.dumps({'status': 'True'})
