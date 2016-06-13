@@ -1,0 +1,71 @@
+
+################## App Flow ##################
+
+1. The hhome page shows the Track tab by default
+
+2. Initially all the tabs will be empty.
+
+3. Now to add a new TRACK, the following are required:
+	a) The Artist of the track should exist in the database
+	b) The Genre of the track should exist in the database
+	c) The Album of the track should exist in the database
+
+	The above checks are important so as to avoid entering of garbage data into the DB.
+
+4. So now, first add a new ARTIST
+	a) Go to the ARTIST tab, and click on the "add new artist" button
+	b) Fill in the name of the artist.
+	c) New artist has been added which is automatically displayed in the ARTIST tab.
+
+5. Now add a new Genre by repeating steps a) and b) of the 4th step.
+
+6. Now add a new ALBUM.
+	a) Type in the name of the album
+	b) Type in the name of the artist of that album
+
+	If the artist exists in the DB, then only a new album will be created.
+	Again, this check has been done to maintain the mapping of albums and artist and to
+	avoid entering of garbage data.
+
+7. Now that the Artist, Genre and Album of the track to be added have all been created,
+	we can now add a new track.
+
+8. Go to the TRACKS tab
+	a) Click on the "add new track" button
+	b) Fill in valid details of artist, genre and album else the track won't be created.
+	c) If the details are correct, the track will be added and hence will be displayed 
+		under the TRACK tab.
+
+9. In the same way, to add any track, you need to check whether its artist, album and 
+	genre already exist in the DB or not.
+
+
+10. Now one one view the details of a track, a genre, an album or an artist by clicking
+	on them respectively. This will open a DETAILVIEW of the same.
+
+11. In the DETAILVIEW, one can edit the details by clicking on the "Edit Details" button
+
+12. User can edit details and then submit the changes.
+
+13. Again, chceks have been made so as to allow only valid entry to the DB.
+	Example, In case of editing a particular track, if the album details entered don't map
+	to the artist details entered in that form, then the edited changes are not made.
+
+
+#################### FEATURES ####################
+
+1. TAB functionality has been given for user convenience.
+
+2. Search functionality for all the TABS separatley.
+
+3. Tracks can be searched based on a word or phrase contained in the title of track, 
+	or based on the exact name of genre of track
+
+4. Add New Track/Genre/Artist/Album forms are displayed using Modal Window using JAVASCRIPT
+	and then submitted using AJAX call, for a better user experience so that the user
+	doesn't have to navigate/redirect to some other page/url.
+
+5. the EDIT DETAILS form has been made in place. Again for a better user experience.
+
+6. Pagination has been included for upto 2 previous and 2 next pages if they exist.
+	Example, there is no previous page for page 1, hence it wont be displayed.

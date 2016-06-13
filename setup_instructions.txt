@@ -1,0 +1,20 @@
+
+################ SETUP INSTRUCTIONS ############
+
+1. Create a virtual environment and activate it.
+2. Clone the repo using the link -> https://github.com/ankushrgv/musicgreed
+3. Install the dependencies given in the Requirements.txt file
+4. Delete all existing migrations in musicgreed/apps/music/migrations directory
+5. Run mysql by typing the command -> mysql -u root -p
+	a) Login using your MySQL username and password
+	b) Create new database named musicgreed by typing the command -> create database musicgreed;
+6. Exit MySQL
+7. Now go to the musicgreed directory and run following commands to make migrations and start server:
+	a) python manage.py makemigration
+	b) python manage.py migrate
+	c) python manage.py runserver
+8. Open Mozilla/Chrome and type localhost:8000 in the address bar.
+
+Your web app is now running..!!
+
+NOTE -> Refer to App Flow and Feautres file before checking out the feautres of the app..!!!!
