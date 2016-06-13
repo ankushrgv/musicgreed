@@ -1,0 +1,45 @@
+<div class="heading" id="heading">
+	<h3> Track Details </h3>
+</div>
+<div class="track info" id="track info">
+	<form class="edit-track" id="edit-track" method="POST" action="">
+		{% csrf_token %}
+		<ul>
+			<li>
+				<div class="left" id="first"> Title </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_title" name="title" value='{{object.title}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> Artist </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_artist" name="artist" value='{{object.artist}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> Album </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_album" name="album" value='{{object.album}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> Genre </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_genre" name="genre" value='{{object.genre}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> Rating </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_rating" name="rating" value='{{object.rating}}' disabled></input>
+				</div>
+			</li>
+				<input type="hidden" id="id_song" name="song" value='{{object.id}}'></input>
+			<li>
+				<button type="submit" class="edit-submit" id="edit-submit">Save Changes</button>
+			</li>
+		</ul> 
+	</form>
+	<button type="button" class="edit-button" id="edit-button">Edit Details</button>
+</div>

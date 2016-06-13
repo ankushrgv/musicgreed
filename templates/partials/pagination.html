@@ -1,0 +1,53 @@
+{% load utils %}
+
+<div class="paginate">	
+	<span class="prev-arrow">
+	{% if page.has_previous %}
+		{% with page_value=page.number|add:"-1" %}
+			{% with page_str=page_value|pageno %}
+			<div class="prev-button">
+				<a href="{{request.GET|handle_get_params:page_str}}">Prev  </a>
+			</div>
+			{% endwith %}
+		{% endwith %}
+	{% endif %}
+	</span>
+
+	<span class="page-list">
+	{% with min=page.number|add:"-3" max=page.number|add:"3" %}
+		{% for x in paginator.page_range %}
+			{% if x > min and x < page.number %}
+				{% with page_str=x|pageno %}
+				<div class="page" id="page">
+					<a href="{{request.GET|handle_get_params:page_str}}">Page {{ x }}</a>
+				</div>
+				{% endwith %}
+			{% endif %}
+		{% endfor %}
+		<div class="current-page" id="current-page">
+			<a> Page {{page.number}} </a>
+		</div>
+		{% for x in paginator.page_range %}
+			{% if x > page.number and x < max %}
+				{% with page_str=x|pageno %}
+				<div class="page" id="page">
+					<a href="{{request.GET|handle_get_params:page_str}}">Page {{ x }}</a>
+				</div>
+				{% endwith %}
+			{% endif %}
+		{% endfor %}
+	{% endwith %}
+	</span>
+
+	<span class="next-arrow">
+	{% if page.has_next %}
+		{% with page_value=page.number|add:"1" %}
+			{% with page_str=page_value|pageno %}
+			<div class="next-button">	
+				<a href="{{request.GET|handle_get_params:page_str}}">  Next</a>
+			</div>
+			{% endwith %}
+		{% endwith %}
+	{% endif %}
+	</span>
+</div>

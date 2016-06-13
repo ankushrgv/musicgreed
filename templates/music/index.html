@@ -1,0 +1,13 @@
+{% extends 'layout/base.html' %}
+
+{% block layout %}
+<div class="content">
+	<div class="container">
+		<div class="tab-list-container" id="tab-list-container">
+			{% block tabs %}
+				{% include 'partials/tabs.html' %}
+			{% endblock tabs %}
+		</div>
+	</div>
+</div>
+{% endblock layout %} 

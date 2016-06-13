@@ -1,0 +1,25 @@
+<div class="heading" id="heading">
+	<h3> Genre Details </h3>
+</div>
+<div class="genre info" id="genre info">
+	<form class="edit-genre" id="edit-genre" method="POST" action="#">
+		{% csrf_token %}
+		<ul>
+			<li>
+				<div class="left" id="first"> Genre </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_genre" name="genre" value='{{object.genre}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> No of Tracks </div>: 
+				<div class="right" id="right">{{object.no_of_tracks}}</div>
+			</li>
+			<input type="hidden" name="genre-id" value="{{object.id}}"></input>
+			<li>
+				<button type="submit" class="edit-submit" id="edit-submit">Save Changes</button>
+			</li>
+		</ul> 
+	</form>
+	<button type="button" class="edit-button" id="edit-button">Edit Details</button>
+</div>

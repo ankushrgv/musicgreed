@@ -1,0 +1,22 @@
+{% load static from staticfiles %}
+<html>
+    <head>
+        <title>{% block title %}Music Greed{% endblock title %}</title>
+        
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}" />
+
+        
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.validate.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    </head>
+    <body>
+        {% block header %}
+            {% include 'partials/header.html' %}
+        {% endblock header %}
+
+        {% block layout %}
+        {% endblock layout %}
+        
+    </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="heading" id="heading">
+	<h3> Artist Details </h3>
+</div>
+<div class="track info" id="track info">
+	<form class="edit-artist" id="edit-artist" method="POST" action="#">
+		{% csrf_token %}
+		<ul>
+			<li>
+				<div class="left" id="first"> Name </div>: 
+				<div class="right" id="right">
+					<input type="text" id="id_artist" name="artist" value='{{object.name}}' disabled></input>
+				</div>
+			</li>
+			<li>
+				<div class="left" id="first"> No of Albums </div>: 
+				<div class="right" id="right">{{object.no_of_tracks}}</div>
+			</li>
+			<li>
+				<div class="left" id="first"> No of Tracks </div>:
+				<div class="right" id="right">{{object.no_of_tracks}}</div>
+			</li>
+			<input type="hidden" name="artist-id" value="{{object.id}}"></input>
+			<li>
+				<button type="submit" class="edit-submit" id="edit-submit">Save Changes</button>
+			</li>
+		</ul>
+	</form>
+	<button type="button" class="edit-button" id="edit-button">Edit Details</button>
+</div>

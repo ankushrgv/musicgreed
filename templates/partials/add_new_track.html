@@ -1,0 +1,32 @@
+{% block add_new %}	
+	<div id="myModal" class="modal">
+		<div class="modal-content">
+			<span class="close">×</span>
+			<div class="add-new-form-container">
+				<h4> Add New Track </h4>
+				<form id="add-new-form" class="add-new-form" action="#" method="POST">
+				{% csrf_token %}
+					<ul>
+						<input type="hidden" name="elemnt_type" value="track"></input>
+						<li><div class="form-field-name">Track Name :</div>
+							<input type="text" id="track" name="track" value=''></input>
+						</li>
+						<li><div class="form-field-name">Genre :</div>
+							<input type="text" id="genre" name="genre" value=''></input>
+						</li>
+						<li><div class="form-field-name">Artist:</div>
+							<input type="text" id="artist" name="artist" value=''></input>
+						</li>
+						<li><div class="form-field-name">Album:</div>
+							<input type="text" id="album" name="album" value=''></input>
+						</li>
+						<li><div class="form-field-name">Rating:</div>
+							<input type="text" id="rating" name="rating" value=''></input>
+						</li>
+						<li><button class="button-primary" type="submit" id="submit-form" data-tab-type="track">Submit</button></li>
+					</ul>
+				</form>
+			</div>
+		</div>
+	</div>
+{% endblock add_new %}

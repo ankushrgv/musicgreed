@@ -1,0 +1,21 @@
+{% extends 'layout/base.html' %}
+
+{% block layout %}
+<div class="content">
+	<div class="container">
+		<div class="details-container" id="details-container">
+			{% block info%}
+				{% if tab_categ == 'track' %}
+					{% include 'partials/track_info.html' %}
+				{% elif tab_categ == 'artist' %}
+					{% include 'partials/artist_info.html' %}
+				{% elif tab_categ == 'genre' %}
+					{% include 'partials/genre_info.html' %}
+				{% else %}
+					{% include 'partials/album_info.html' %}
+				{% endif %}
+			{% endblock info%}
+		</div>
+	</div>
+</div>
+{% endblock layout %} 

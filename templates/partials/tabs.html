@@ -1,0 +1,125 @@
+{% load utils %}
+
+{% block tabs %}
+<div class="tabs" id="tabs">
+	<ul class="tab-list">
+		{% for tab in tabtypes %}
+			<li class="cls_tab {% if tab_categ == tab %}active{% endif %}" id="{{tab}}">
+				<a href="{{tab}}" data-type="{{tab}}">{{tab|title}}</a>
+			</li>
+		{% endfor %}
+	</ul>
+</div>
+
+{% block add_new %}
+	{% if tab_categ == 'track' %}
+		{% include 'partials/add_new_track.html' %}
+	{% elif tab_categ == 'artist' %}
+		{% include 'partials/add_new_artist.html' %}
+	{% elif tab_categ == 'genre' %}
+		{% include 'partials/add_new_genre.html' %}
+	{% else %}
+		{% include 'partials/add_new_album.html' %}
+	{% endif %}
+{% endblock add_new %}
+
+<div class="results" id="results">
+	<div class="search-box" id="search-box">
+	    <form class="search_form" id="search_form" method="GET" action=""> 
+	        {% if tab_categ == 'track'%}
+	        	<input type="text" id="track_tab_search_text" name="searched" value="Search Here"></input>
+	        	<div class="radio-buttons" id="radio-buttons">
+	        		Search by : 
+		        	<input type="radio" id="radio-title" name="search-type" value="title" checked>Title</input>
+		        	<input type="radio" id="radio-title" name="search-type" value="genre">Genre</input>
+		        </div>
+		    {% else %}
+		    	<input type="text" id="search_text" name="searched" value="Search Here"></input>
+		    {% endif %}
+		    <button type="submit" class="search-button" id="search-button">Search</button>
+	    </form>
+	</div>
+	<ul class="objects-list" id="objects-list">
+		{% for result in page %}
+			{% if tab_categ == 'track' %}
+				<a href="{% url "music:trackdetails" pk=result.pk %}" id="{{ result.id }}" class="cls_string_name">
+			{% elif tab_categ == 'artist' %}
+				<a href="{% url "music:artistdetails" pk=result.id %}" id="{{ result.id }}" class="cls_string_name">
+			{% elif tab_categ == 'genre' %}	
+				<a href="{% url "music:genredetails" pk=result.pk %}" id="{{ result.id }}" class="cls_string_name">
+			{% else %}	
+				<a href="{% url "music:albumdetails" pk=result.pk %}" id="{{ result.id }}" class="cls_string_name">
+			{% endif %}
+				<div class="string-name-container">
+					{% if tab_categ == 'track' %}
+						<li>
+							<div class="song-title" id="song-title">
+								{{ result.title|title }}
+							</div>
+							<div class="song-genre" id="song-genre">
+								Genre : {{result.genre|title}}
+							</div>
+							<div class="song-rating" id="song-rating">
+								Rating : {{result.rating}}
+							</div>
+						</li>
+					{% elif tab_categ == 'artist' %}
+						<li> 
+							<div class="artist name" id="artist name">
+								{{ result.name|title }}
+							</div> 
+							<div class="artist no-of-songs" id="artist no-of-songs">
+								Total Tracks : {{ result.no_of_tracks }}
+							</div>
+						</li>
+					{% elif tab_categ == 'genre' %}
+						<li>
+							<div class="genre name" id="genre name">
+								{{ result.genre|title }}
+							</div> 
+							<div class="genere no-of-songs" id="genre no-of-songs">
+								Total Tracks : {{ result.no_of_tracks }}
+							</div>
+						</li>
+					{% else %}
+						<li>
+							<div class="album name" id="album name">
+								{{ result.name|title }}
+							</div> 
+							<div class="album no-of-songs" id="album no-of-songs">
+								Total Tracks : {{ result.no_of_tracks }}
+							</div>
+						</li>
+					{% endif %}
+				</div>
+				</a>
+		{% endfor %}
+	</ul>
+	{% if tab_categ == 'track' %}
+		<div class="add-new song" id="add-new song">
+			<a href="#">
+				<button type="button" class="add-new-song-button" id="add-new-song-button"> Add New Song </button>
+			</a>
+		</div>
+	{% elif tab_categ == 'artist' %}
+		<div class="add-new artist" id="add-new artist">
+			<a href="#">
+				<button type="button" class="add-new-artist-button" id="add-new-artist-button"> Add New Artist </button>
+			</a>
+		</div>
+	{% elif tab_categ == 'genre' %}
+		<div class="add-new genre" id="add-new genre">
+			<a href="#">
+				<button type="button" class="add-new-genre-button" id="add-new-genre-button"> Add New Genre </button>
+			</a>
+		</div>
+	{% else %}
+		<div class="add-new album" id="add-new album">
+			<a href="#">
+				<button type="button" class="add-new-album-button" id="add-new-album-button"> Add New Album </button>
+			</a>
+		</div>
+	{% endif %}
+	{% include 'partials/pagination.html' %}
+</div>
+{% endblock tabs %}
