@@ -42,6 +42,9 @@
 	<ul class="objects-list" id="objects-list">
 		{% for result in page %}
 			{% if tab_categ == 'track' %}
+				<audio controls>
+					<source src="/home/ankush/greedy_assignment/musicgreed/static/audio/1.mp3" type="audio/mpeg">
+				</audio> 
 				<a href="{% url "music:trackdetails" pk=result.pk %}" id="{{ result.id }}" class="cls_string_name">
 			{% elif tab_categ == 'artist' %}
 				<a href="{% url "music:artistdetails" pk=result.id %}" id="{{ result.id }}" class="cls_string_name">
